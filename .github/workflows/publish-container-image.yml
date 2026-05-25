@@ -26,6 +26,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          submodules: true
+
+      - name: Prepare Docker build inputs
+        run: cp opam/semgrep.opam semgrep.opam
 
       - name: Compute image name
         id: image
