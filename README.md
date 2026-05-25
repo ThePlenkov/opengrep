@@ -90,6 +90,34 @@ Or with a specific version:
 
 Binaries are available on the [releases page](https://github.com/opengrep/opengrep/releases).
 
+### Container image (GitHub Container Registry)
+
+On every pushed `v*` tag, this repository publishes a container image to GHCR:
+
+```text
+ghcr.io/<repository_owner>/<repository_name>:<tag>
+```
+
+Examples for this repository:
+
+```text
+ghcr.io/opengrep/opengrep:v1.2.3
+ghcr.io/opengrep/opengrep:sha-<commit>
+```
+
+Use it in CI:
+
+```yaml
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/<repository_owner>/<repository_name>:v1.2.3
+    steps:
+      - uses: actions/checkout@v5
+      - run: opengrep scan --config auto .
+```
+
 ## Getting started
 
 Create `rules/demo-rust-unwrap.yaml` with the following content:
