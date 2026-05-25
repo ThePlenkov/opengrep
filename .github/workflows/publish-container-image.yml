@@ -1,6 +1,7 @@
+---
 name: publish-container-image
 
-on:
+"on":
   push:
     tags:
       - "v*"
